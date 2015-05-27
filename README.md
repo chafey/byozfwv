@@ -7,20 +7,20 @@ This github repository contains the supporting material for the SIIM 2015 Learni
 Required Software
 -----------------
 
-* Install [git](https://git-scm.com/downloads) - Required
+* [git](https://git-scm.com/downloads) - download and run installer
 
-* Install [Node.js](https://nodejs.org/) - Required
+* [Node.js](https://nodejs.org/) - download and run installer
 
-* Install [Bower](http://bower.io/) - Required
+* [Bower](http://bower.io/) - install via NPM
 
 > npm install -g bower
 
 Recommended Software
 --------------------
 
-* Install [WebStorm](https://www.jetbrains.com/webstorm/download/) A free 30 day trial is available.  You are free to
-use another IDE, but this is my preference and what I will be using during the learning lab.  If you do use another IDE,
-make sure you also have a web server setup to serve HTML/JS/CSS from (e.g Apache, IIS,
+* [WebStorm](https://www.jetbrains.com/webstorm/download/) - download and run installer.  A free 30 day trial is
+available.  You are free to use another IDE, but this is my preference and what I will be using during the learning
+lab.  If you do use another IDE, make sure you also have a web server setup to serve HTML/JS/CSS from (e.g Apache, IIS,
 [live-server](https://www.npmjs.com/package/live-server) or whatever you prefer)
 
 Optional Software
