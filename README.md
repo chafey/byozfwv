@@ -1,18 +1,29 @@
 Build Your Own Zero Footprint Web Viewer
 ========================================
 
-Pre-requisities
----------------
+This github repository contains the supporting material for the SIIM 2015 Learning Lab
+"Build Your Own Zero Footprint Web Viewer".
 
-* [WebStorm](https://www.jetbrains.com/webstorm/download/)
+Required Software
+-----------------
 
-* [Node.js](www.node.js)
+* Install [git](https://git-scm.com/downloads) - Required
 
-* [Grunt](http://gruntjs.com/)
+* Install [Node.js](www.node.js) - Required
 
-> npm install -g grunt-cli
-
-* [Bower](http://bower.io/)
+* Install [Bower](http://bower.io/) - Required
 
 > npm install -g bower
 
+* Install [WebStorm](https://www.jetbrains.com/webstorm/download/) A free 30 day trial is available.
+
+Instructions
+------------
+
+* Clone this repository
+
+> git clone https://github.com/chafey/byozfwv.git
+
+* Install bower dependencies
+
+> bower install

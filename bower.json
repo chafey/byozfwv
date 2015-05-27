@@ -1,0 +1,37 @@
+{
+  "name": "byozfwb",
+  "version": "0.0.1",
+  "description": "Build Your Own Zero Footprint Web Viewer SIIM 2015 Learning Lab",
+  "ignore": [
+    "examples",
+    "src",
+    "test",
+    "gruntfile.js",
+    "package.json",
+    "README.md",
+    ".gitignore"
+  ],
+  "dependencies": {
+    "cornerstone": "~0.7.3",
+    "cornerstoneTools": "~0.6.2",
+    "cornerstoneWADOImageLoader": "~0.5.2",
+    "cornerstoneWebImageLoader": "~0.4.2",
+    "cornerstoneMath": "~0.1.1",
+    "cornerstone-file-image-loader": "0.5.1",
+    "cornerstone-test-image-loader": "0.2.0",
+    "image-jpeg2000": "0.0.1",
+    "bootstrap": "~3.3.4",
+    "hammerjs": "~1.0.10",
+    "jquery" : "~2.1.1"
+  },
+  "devDependencies": {
+  },
+  "license": "MIT",
+  "authors" : ["Chris Hafey"],
+  "homepage": "https://github.com/chafey/byozfwb",
+  "keywords": ["DICOM", "medical", "imaging", "WADO", "cornerstone", "SIIM"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chafey/byozfwb.git"
+  }
+}

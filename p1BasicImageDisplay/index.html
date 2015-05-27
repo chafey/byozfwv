@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+    <TITLE>Basic Image Display</TITLE>
+    <SCRIPT src="../bower_components/jquery/dist/jquery.min.js"></SCRIPT>
+    <SCRIPT src="../bower_components/cornerstone/dist/cornerstone.js"></SCRIPT>
+    <SCRIPT src="../bower_components/cornerstone-test-image-loader/dist/cornerstoneTestImageLoader.js"></SCRIPT>
+</HEAD>
+<BODY>
+    <DIV id="myImage" style="width:512px; height:512px;background-color:gray"></DIV>
+</BODY>
+<SCRIPT>
+    $(document).ready(function() {
+        var imageId = 'example://1';
+        var element = document.getElementById('myImage');
+        cornerstone.enable(element);
+        cornerstone.loadImage(imageId).then(function(image) {
+            cornerstone.displayImage(element, image);
+        });
+    });
+</SCRIPT>
+</HTML>
