@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+    <TITLE>Basic Image Display</TITLE>
+    <SCRIPT src="../bower_components/jquery/dist/jquery.min.js"></SCRIPT>
+    <SCRIPT src="../bower_components/cornerstone/dist/cornerstone.js"></SCRIPT>
+    <SCRIPT src="../bower_components/cornerstone-test-image-loader/dist/cornerstoneTestImageLoader.js"></SCRIPT>
+    <SCRIPT src="../bower_components/cornerstoneMath/dist/cornerstoneMath.js"></SCRIPT>
+    <SCRIPT src="../bower_components/cornerstoneTools/dist/cornerstoneTools.js"></SCRIPT>
+    <!-- step 1: add cornerstoneWADOImageLoader and dicomParser libraries
+    <SCRIPT src="../bower_components/dicomParser/dist/dicomParser.js"></SCRIPT>
+    <SCRIPT src="../bower_components/cornerstoneWADOImageLoader/dist/cornerstoneWADOImageLoader.js"></SCRIPT>
+    -->
+</HEAD>
+<BODY>
+
+<!-- step 2: add input and button controls to get url and load it
+<input type="text" style="width:1024px" id="wadoURL" placeholder="Enter WADO URL" value="http://cornerstonetech.org/images/ClearCanvas/CTStudy/1.2.840.113619.2.30.1.1762295590.1623.978668950.160.dcm">
+<button type="button" id="downloadAndView">Download and View</button>
+-->
+
+<DIV id="myImage" style="width:512px; height:512px;background-color:gray"
+     oncontextmenu="return false"
+     class='cornerstone-enabled-image'
+     unselectable='on'
+     onselectstart='return false;'
+     onmousedown='return false;'>
+</DIV>
+</BODY>
+<SCRIPT>
+    $(document).ready(function() {
+        var imageId = 'ctexample://1';
+        var element = document.getElementById('myImage');
+        cornerstone.enable(element);
+        cornerstone.loadImage(imageId).then(function(image) {
+            cornerstone.displayImage(element, image);
+             cornerstoneTools.mouseInput.enable(element);
+             cornerstoneTools.mouseWheelInput.enable(element);
+             // Enable all tools we want to use with this element
+             cornerstoneTools.wwwc.activate(element, 1); // ww/wc is the default tool for left mouse button
+             cornerstoneTools.pan.activate(element, 2); // pan is the default tool for middle mouse button
+             cornerstoneTools.zoom.activate(element, 4); // zoom is the default tool for right mouse button
+             cornerstoneTools.zoomWheel.activate(element); // zoom is the default tool for middle mouse wheel
+        });
+
+        /*
+        // step 3: add event handler for button and load the image
+        $("#downloadAndView").click(function() {
+            var url = $('#wadoURL').val();
+            // prefix the url with dicomweb: so cornerstone can find the image loader
+            url = "dicomweb:" + url;
+            var element = $('#myImage').get(0);
+            // image enable the dicomImage element and activate a few tools
+            cornerstone.loadImage(url).then(function(image) {
+                cornerstone.displayImage(element, image);
+            });
+        });
+        */
+
+    });
+</SCRIPT>
+</HTML>

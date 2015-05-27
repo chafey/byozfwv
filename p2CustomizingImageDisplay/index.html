@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+    <TITLE>Basic Image Display</TITLE>
+        <SCRIPT src="../bower_components/jquery/dist/jquery.min.js"></SCRIPT>
+        <SCRIPT src="../bower_components/cornerstone/dist/cornerstone.js"></SCRIPT>
+        <SCRIPT src="../bower_components/cornerstone-test-image-loader/dist/cornerstoneTestImageLoader.js"></SCRIPT>
+
+</HEAD>
+<BODY>
+    <DIV id="myImage" style="width:512px; height:512px;background-color:gray"></DIV>
+</BODY>
+<SCRIPT>
+     $(document).ready(function() {
+         var imageId = 'ctexample://1';
+         var element = document.getElementById('myImage');
+         cornerstone.enable(element);
+         cornerstone.loadImage(imageId).then(function(image) {
+             cornerstone.displayImage(element, image);
+             // step 1: get the viewport, modify it and set it
+             /*
+             var viewport = cornerstone.getViewport(element);
+             viewport.voi.windowCenter = -400;
+             viewport.voi.windowWidth = 800;
+             viewport.scale = 0.5;
+             viewport.translation.x = -256;
+             viewport.translation.y = -256;
+             cornerstone.setViewport(element, viewport);
+            */
+
+             // step 2: set an event handler so we can draw onto the image
+             /*
+             $(element).on("CornerstoneImageRendered", function(e, eventData)
+             {
+                 cornerstone.setToPixelCoordinateSystem(eventData.enabledElement, eventData.canvasContext);
+                 var context = eventData.canvasContext;
+                 // draw a square
+                 context.beginPath();
+                 context.strokeStyle = 'white';
+                 context.lineWidth = .5;
+                 context.rect(128, 90, 50, 60);
+                 context.stroke();
+                 // draw some text
+                 context.fillStyle = "white";
+                 context.font = "12px Arial";
+                 context.fillText("Text", 128, 85);
+             });
+             // force the image to redraw itself now that we have an event handler
+             cornerstone.draw(element);
+             */
+
+         });
+     });
+</SCRIPT>
+</HTML>
