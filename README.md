@@ -4,6 +4,10 @@ Build Your Own Zero Footprint Web Viewer
 This github repository contains the supporting material for the SIIM 2015 Learning Lab
 ["Build Your Own Zero Footprint Web Viewer"](http://siim.org/default.asp?page=15build_your_own)
 
+Power point for the presentation for this is [here](https://drive.google.com/file/d/0BzovUgmP3BOKUHplZ0lNalVLQlU/view?usp=sharing)
+
+Link to view recording of learning lab :TBD
+
 Required Software
 -----------------
 
