@@ -1,0 +1,46 @@
+{
+  "name": "cornerstone",
+  "version": "0.9.0",
+  "description": "HTML5 Medical Image Viewer Component",
+  "main": "dist/cornerstone.js",
+  "ignore": [
+    "docs",
+    "example",
+    "src",
+    "test",
+    "gruntfile.js",
+    "package.json",
+    "bower.json",
+    ".gitignore"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1"
+  },
+  "devDependencies": {
+    "qunit": "~1.14.0"
+  },
+  "license": "MIT",
+  "authors": [
+    "Chris Hafey"
+  ],
+  "homepage": "https://github.com/chafey/cornerstone",
+  "keywords": [
+    "DICOM",
+    "medical",
+    "imaging"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chafey/cornerstone.git"
+  },
+  "_release": "0.9.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.9.0",
+    "commit": "0e290be19a9dc0df219b8b91d001d4ff65617da2"
+  },
+  "_source": "https://github.com/chafey/cornerstone.git",
+  "_target": "^0.9.0",
+  "_originalSource": "cornerstone",
+  "_direct": true
+}

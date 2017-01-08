@@ -1,0 +1,47 @@
+{
+  "name": "cornerstone-test-image-loader",
+  "version": "0.2.0",
+  "description": "Cornerstone Test Image Loader",
+  "main": "dist/cornerstoneTestImageLoader.js",
+  "ignore": [
+    "docs",
+    "examples",
+    "src",
+    "test",
+    "gruntfile.js",
+    "package.json",
+    "bower.json",
+    ".gitignore"
+  ],
+  "dependencies": {
+    "cornerstone": "~0.7.3",
+    "jquery": "~2.1.1"
+  },
+  "devDependencies": {
+    "bootstrap": "~3.3.4",
+    "cornerstoneTools": "~0.6.2"
+  },
+  "license": "MIT",
+  "authors": [
+    "Chris Hafey"
+  ],
+  "homepage": "https://github.com/chafey/cornerstone-test-image-loader",
+  "keywords": [
+    "DICOM",
+    "medical",
+    "imaging"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chafey/cornerstone-test-image-loader.git"
+  },
+  "_release": "0.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.2.0",
+    "commit": "5df1f77029e4e943bc754000f09b2d048117ca9b"
+  },
+  "_source": "https://github.com/chafey/cornerstone-test-image-loader.git",
+  "_target": "0.2.0",
+  "_originalSource": "cornerstone-test-image-loader"
+}
