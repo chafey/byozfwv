@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+    <TITLE>WebGL Image Display</TITLE>
+    <SCRIPT src="../node_modules/jquery/dist/jquery.min.js"></SCRIPT>
+    <SCRIPT src="../node_modules/cornerstone-core/dist/cornerstone.js"></SCRIPT>
+    <SCRIPT src="../exampleImageIdLoader.js"></SCRIPT>
+    <SCRIPT src="../exampleImageIdLoaderCt.js"></SCRIPT>
+    <SCRIPT src="../node_modules/cornerstone-math/dist/cornerstoneMath.js"></SCRIPT>
+    <SCRIPT src="../node_modules/cornerstone-tools/dist/cornerstoneTools.js"></SCRIPT>
+    <SCRIPT src="../node_modules/dicom-parser/dist/dicomParser.js"></SCRIPT>
+    <SCRIPT src="../node_modules/cornerstone-wado-image-loader/dist/cornerstoneWADOImageLoader.js"></SCRIPT>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+</HEAD>
+<BODY>
+<div class="container">
+
+<h1>
+WebGL Example
+</h1>
+
+This is an example of WebGL use in cornerstone
+
+<br>
+
+<input type="text"
+       style="width:1024px"
+       id="wadoURL"
+       placeholder="Enter WADO URL"
+       value="https://cdn.rawgit.com/chafey/byozfwv/cb216551/sampleData/1.2.840.113619.2.30.1.1762295590.1623.978668950.160.dcm">
+<button type="button" id="downloadAndView">Download and View</button>
+
+<br>
+
+<div class="row">
+    <div class="col-xs-6">
+        <h4>WebGL</h4>
+        <div style="width:512px;height:512px;position:relative;color: white;"
+             class="cornerstone-enabled-image"
+             oncontextmenu="return false"
+             unselectable='on'
+             onselectstart='return false;'
+             onmousedown='return false;'>
+            <div id="dicomImageWebGL" oncontextmenu="return false"
+                 style="width:512px;height:512px;top:0px;left:0px; position:absolute">
+            </div>
+            <div class="topleft" style="position: absolute;top:0px; left:0px">
+                Patient Name
+            </div>
+            <div class="topright" style="position: absolute;top:0px; right:0px">
+                Render Time:
+            </div>
+            <div class="bottomright" style="position: absolute;bottom:0px; right:0px">
+                Zoom:
+            </div>
+            <div class="bottomleft" style="position: absolute;bottom:0px; left:0px">
+                WW/WC:
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <h4>Canvas</h4>
+        <div style="width:512px;height:512px;position:relative;color: white;"
+             class="cornerstone-enabled-image"
+             oncontextmenu="return false"
+             unselectable='on'
+             onselectstart='return false;'
+             onmousedown='return false;'>
+            <div id="dicomImage" oncontextmenu="return false"
+                 style="width:512px;height:512px;top:0px;left:0px; position:absolute">
+            </div>
+            <div class="topleft" style="position: absolute;top:0px; left:0px">
+                Patient Name
+            </div>
+            <div class="topright" style="position: absolute;top:0px; right:0px">
+                Render Time:
+            </div>
+            <div class="bottomright" style="position: absolute;bottom:0px; right:0px">
+                Zoom:
+            </div>
+            <div class="bottomleft" style="position: absolute;bottom:0px; left:0px">
+                WW/WC:
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</body>
+
+<script>
+
+    $(document).ready(function() {
+        var element = document.getElementById('dicomImage');
+        var elementWebGL = document.getElementById('dicomImageWebGL');
+
+
+        function onImageRendered(e, eventData) {
+            $(eventData.element).siblings('.topright').text("Render Time:" + eventData.renderTimeInMs + " ms");
+            $(eventData.element).siblings('.bottomleft').text("WW/WL:" + Math.round(eventData.viewport.voi.windowWidth) + "/" + Math.round(eventData.viewport.voi.windowCenter));
+            $(eventData.element).siblings('.bottomright').text("Zoom:" + eventData.viewport.scale.toFixed(2));
+
+        }
+        $(element).on("CornerstoneImageRendered", onImageRendered);
+        $(elementWebGL).on("CornerstoneImageRendered", onImageRendered);
+
+        var imageId = 'example://1';
+
+        cornerstone.enable(element);
+        cornerstone.loadAndCacheImage(imageId).then(function(image) {
+            cornerstone.displayImage(element, image);
+            cornerstoneTools.mouseInput.enable(element);
+            cornerstoneTools.mouseWheelInput.enable(element);
+            // Enable all tools we want to use with this element
+            cornerstoneTools.wwwc.activate(element, 1); // ww/wc is the default tool for left mouse button
+            cornerstoneTools.pan.activate(element, 2); // pan is the default tool for middle mouse button
+            cornerstoneTools.zoom.activate(element, 4); // zoom is the default tool for right mouse button
+            cornerstoneTools.zoomWheel.activate(element); // zoom is the default tool for middle mouse wheel
+        });
+
+
+        var options = {
+            renderer: 'webgl'
+        };
+
+        cornerstone.enable(elementWebGL, options);
+        cornerstone.loadAndCacheImage(imageId).then(function(image) {
+            cornerstone.displayImage(elementWebGL, image);
+            cornerstoneTools.mouseInput.enable(elementWebGL);
+            cornerstoneTools.mouseWheelInput.enable(elementWebGL);
+            // Enable all tools we want to use with this element
+            cornerstoneTools.wwwc.activate(elementWebGL, 1); // ww/wc is the default tool for left mouse button
+            cornerstoneTools.pan.activate(elementWebGL, 2); // pan is the default tool for middle mouse button
+            cornerstoneTools.zoom.activate(elementWebGL, 4); // zoom is the default tool for right mouse button
+            cornerstoneTools.zoomWheel.activate(elementWebGL); // zoom is the default tool for middle mouse wheel
+        });
+
+        var config = {
+            maxWebWorkers: navigator.hardwareConcurrency || 1,
+            startWebWorkersOnDemand: true,
+            webWorkerPath : '/node_modules/cornerstone-wado-image-loader/dist/cornerstoneWADOImageLoaderWebWorker.js',
+            taskConfiguration: {
+                'decodeTask' : {
+                    loadCodecsOnStartup : true,
+                    initializeCodecsOnStartup: false,
+                    codecsPath: '/node_modules/cornerstone-wado-image-loader/dist/cornerstoneWADOImageLoaderCodecs.js',
+                }
+            }
+        };
+        cornerstoneWADOImageLoader.webWorkerManager.initialize(config);
+
+        $("#downloadAndView").click(function() {
+            var url = $('#wadoURL').val();
+            // prefix the url with dicomweb: so cornerstone can find the image loader
+            url = "dicomweb:" + url;
+            var element = document.getElementById('dicomImage');
+            var elementWebGL = document.getElementById('dicomImageWebGL');
+
+            cornerstone.loadImage(url).then(function(image) {
+                cornerstone.displayImage(element, image);
+                cornerstone.displayImage(elementWebGL, image);
+            });
+        });
+    });
+</script>
+</html>
