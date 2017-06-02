@@ -15,10 +15,6 @@ Required Software
 
 * [Node.js](https://nodejs.org/) - download and run installer
 
-* [Bower](http://bower.io/) - install via NPM
-
-> npm install -g bower
-
 Recommended Software
 --------------------
 
@@ -41,6 +37,6 @@ Instructions
 
 > git clone https://github.com/chafey/byozfwv.git
 
-* Install bower dependencies
+* Install NPM dependencies
 
-> bower install
+> npm install

@@ -2,19 +2,15 @@
 <HTML>
 <HEAD>
     <TITLE>Basic Image Display</TITLE>
-    <!-- step 2: add references to jquery, cornerstone and an image loader (cornerstone-test-image-loader)
-        <SCRIPT src="../bower_components/jquery/dist/jquery.min.js"></SCRIPT>
-        <SCRIPT src="../bower_components/cornerstone/dist/cornerstone.js"></SCRIPT>
-        <SCRIPT src="../bower_components/cornerstone-test-image-loader/dist/cornerstoneTestImageLoader.js"></SCRIPT>
-     -->
+    <SCRIPT src="../node_modules/jquery/dist/jquery.min.js"></SCRIPT>
+    <SCRIPT src="../node_modules/cornerstone-core/dist/cornerstone.js"></SCRIPT>
+    <SCRIPT src="../exampleImageIdLoader.js"></SCRIPT>
+    <SCRIPT src="../exampleImageIdLoaderCt.js"></SCRIPT>
 </HEAD>
 <BODY>
-    <!-- step 1: add a div to display the image in and position/size it
-        <DIV id="myImage" style="width:512px; height:512px;background-color:gray"></DIV>
-    -->
+    <DIV id="myImage" style="width:512px; height:512px; background-color:gray"></DIV>
 </BODY>
 <SCRIPT>
-    /* step 3: add javascript to load and display the image
     $(document).ready(function() {
         var imageId = 'example://1';
         var element = document.getElementById('myImage');
@@ -23,6 +19,7 @@
             cornerstone.displayImage(element, image);
         });
     });
-    */
 </SCRIPT>
 </HTML>
+
+

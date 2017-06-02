@@ -1,0 +1,26 @@
+{
+  "name": "byozfwv",
+  "version": "1.0.0",
+  "description": "Repo supporting the SIIM Build Your Own Zero Footprint Web Viewer Learning Lab",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swederik/byozfwv.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/swederik/byozfwv/issues"
+  },
+  "homepage": "https://github.com/swederik/byozfwv#readme",
+  "dependencies": {
+    "cornerstone-core": "^0.10.10",
+    "cornerstone-tools": "^0.8.6",
+    "cornerstone-wado-image-loader": "^0.14.4",
+    "dicom-parser": "^1.7.4",
+    "jquery": "^2.2.4"
+  }
+}

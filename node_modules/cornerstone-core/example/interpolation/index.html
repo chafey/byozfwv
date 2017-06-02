@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!-- twitter bootstrap CSS stylesheet - not required by cornerstone -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- cornerstone css - provides some useful css classes -->
+    <link href="../cornerstone.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+
+    <h1>
+        interpolation/index.html
+    </h1>
+
+    This is an example of turning on/off interpolation
+
+    <br>
+    <br>
+
+    <div id="dicomImage" style="width:512px;height:512px"
+         class="cornerstone-enabled-image"
+         oncontextmenu="return false"
+         unselectable='on'
+         onselectstart='return false;'
+         onmousedown='return false;'>
+    </div>
+
+    <button id="interpolation" class="btn">Toggle Interpolation</button>
+
+</div>
+</body>
+
+<!-- cornerstone depends on jQuery so it must be loaded first-->
+<script src="../jquery.min.js"></script>
+
+<!-- include the cornerstone library -->
+<script src="../../dist/cornerstone.js"></script>
+
+<!-- include special code for these examples which provides images -->
+<script src="../exampleImageIdLoader.js"></script>
+
+<script>
+
+    $(document).ready(function() {
+
+        // image enable the dicomImage element
+        var element = $('#dicomImage').get(0);
+        cornerstone.enable(element);
+
+        // load the image and display it
+        var imageId = 'example://1';
+        cornerstone.loadImage(imageId).then(function(image) {
+            var viewportOptions = {
+                scale: 6.0
+            };
+            cornerstone.displayImage(element, image, viewportOptions);
+        });
+
+
+        $('#interpolation').click(function (e) {
+            var viewport = cornerstone.getViewport(element);
+            if (viewport.pixelReplication === true) {
+                viewport.pixelReplication = false;
+            } else {
+                viewport.pixelReplication = true;
+            }
+            cornerstone.setViewport(element, viewport);
+        });
+
+        // add event handlers to mouse move to adjust window/center
+        $('#dicomImage').mousedown(function (e) {
+            var lastX = e.pageX;
+            var lastY = e.pageY;
+
+            $(document).mousemove(function (e) {
+                var deltaX = e.pageX - lastX,
+                        deltaY = e.pageY - lastY;
+                lastX = e.pageX;
+                lastY = e.pageY;
+
+                var viewport = cornerstone.getViewport(element);
+                viewport.voi.windowWidth += (deltaX / viewport.scale);
+                viewport.voi.windowCenter += (deltaY / viewport.scale);
+                cornerstone.setViewport(element, viewport);
+            });
+
+            $(document).mouseup(function (e) {
+                $(document).unbind('mousemove');
+                $(document).unbind('mouseup');
+            });
+        });
+    });
+
+</script>
+</html>

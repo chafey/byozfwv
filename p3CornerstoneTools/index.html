@@ -1,18 +1,16 @@
 <!DOCTYPE HTML>
 <HTML>
 <HEAD>
-    <TITLE>Basic Image Display</TITLE>
-    <SCRIPT src="../bower_components/jquery/dist/jquery.min.js"></SCRIPT>
-    <SCRIPT src="../bower_components/cornerstone/dist/cornerstone.js"></SCRIPT>
-    <SCRIPT src="../bower_components/cornerstone-test-image-loader/dist/cornerstoneTestImageLoader.js"></SCRIPT>
-    <!-- step 1- add cornerstoneMath and cornerstoneTools libraries
-        <SCRIPT src="../bower_components/cornerstoneMath/dist/cornerstoneMath.js"></SCRIPT>
-        <SCRIPT src="../bower_components/cornerstoneTools/dist/cornerstoneTools.js"></SCRIPT>
--->
+    <TITLE>Cornerstone Tools</TITLE>
+    <SCRIPT src="../node_modules/jquery/dist/jquery.min.js"></SCRIPT>
+    <SCRIPT src="../node_modules/cornerstone-core/dist/cornerstone.js"></SCRIPT>
+    <SCRIPT src="../exampleImageIdLoader.js"></SCRIPT>
+    <SCRIPT src="../exampleImageIdLoaderCt.js"></SCRIPT>
+    <SCRIPT src="../node_modules/cornerstone-math/dist/cornerstoneMath.js"></SCRIPT>
+    <SCRIPT src="../node_modules/cornerstone-tools/dist/cornerstoneTools.js"></SCRIPT>
     </HEAD>
     <BODY>
-    <!-- note that we add some stuff to deal with default mouse beahviors in the browser for selection and rick click -->
-    <DIV id="myImage" style="width:512px; height:512px;background-color:gray"
+    <DIV id="myImage" style="width:512px; height:512px; background-color:gray"
          oncontextmenu="return false"
          class='cornerstone-enabled-image'
          unselectable='on'
@@ -27,9 +25,10 @@
         cornerstone.enable(element);
         cornerstone.loadImage(imageId).then(function(image) {
             cornerstone.displayImage(element, image);
-            /*
+
             // Step 2 - enable mouse input and assign tools to each mouse button
-             cornerstoneTools.mouseInput.enable(element);
+            /*cornerstoneTools.mouseInput.enable(element);
+
             cornerstoneTools.mouseWheelInput.enable(element);
             // Enable all tools we want to use with this element
             cornerstoneTools.wwwc.activate(element, 1); // ww/wc is the default tool for left mouse button
