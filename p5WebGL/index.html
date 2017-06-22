@@ -113,7 +113,7 @@ This is an example of WebGL use in cornerstone
         $(element).on("CornerstoneNewImage", onNewImage);
         $(elementWebGL).on("CornerstoneNewImage", onNewImage);
 
-        $(cornerstone).on('CornerstoneImageLoadProgress', function(event, eventData) {
+        $(cornerstone.events).on('CornerstoneImageLoadProgress', function(event, eventData) {
         $('#loadProgress').text('Image Load Progress: ' + eventData.percentComplete + "%");
         });
 
@@ -140,7 +140,7 @@ This is an example of WebGL use in cornerstone
 
         var options = {
             // Step 1: Set rendering options to use WebGL
-            // renderer: 'webgl'
+            renderer: 'webgl'
         };
 
         cornerstone.enable(elementWebGL, options);

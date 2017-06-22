@@ -1,8 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-const rootPath = process.env.PWD;
-const context = path.resolve(rootPath, "src");
-const outputPath = path.resolve(rootPath, 'dist');
+const rootPath = process.cwd();
+const context = path.join(rootPath, "src");
+const outputPath = path.join(rootPath, 'dist');
 const bannerPlugin = require('./plugins/banner');
 
 module.exports = {
@@ -21,11 +21,29 @@ module.exports = {
   devtool: 'source-map',
   externals: {
     jquery: {
+      commonjs: "jquery",
+      commonjs2: "jquery",
+      amd: "jquery",
       root: '$'
     },
-    'hammerjs': 'Hammer',
-    'cornerstone-core': 'cornerstone',
-    'cornerstone-math': 'cornerstoneMath'
+    'hammerjs': {
+      commonjs: "hammerjs",
+      commonjs2: "hammerjs",
+      amd: "hammerjs",
+      root: 'Hammer'
+    },
+    'cornerstone-core': {
+      commonjs: "cornerstone-core",
+      commonjs2: "cornerstone-core",
+      amd: "cornerstone-core",
+      root: 'cornerstone'
+    },
+    'cornerstone-math': {
+      commonjs: "cornerstone-math",
+      commonjs2: "cornerstone-math",
+      amd: "cornerstone-math",
+      root: 'cornerstoneMath'
+    }
   },
   module: {
     rules: [{
